@@ -1,6 +1,3 @@
-import io
-
-
 def main():
     exercicio2()
 
