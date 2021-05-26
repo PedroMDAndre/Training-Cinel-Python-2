@@ -1,5 +1,5 @@
 def main():
-    exercicio12()
+    exercicio13()
 
 
 # Exercício 1
@@ -176,6 +176,27 @@ def procura(lista, valor):
             qt += 1
             indices.append(i)
         i += 1
+
+    print(f"{valor} ocorre {qt} vezes na lista.")
+    print(f"Nas seguintes posições: {indices}")
+
+
+def exercicio13():
+    lista = [3, 7, 5, 9, 3, 5, 7, 2, 0, 9, 6, 3, 0, 8]
+    print(f"Lista de valores: {lista}")
+    valor = int(input("Qual o nº que deseja procurar? "))
+    procura_alt(lista, valor)
+
+
+# alternativa
+def procura_alt(lista, valor):
+    qt = 0
+    indices = []
+
+    for pos, elem in enumerate(lista):
+        if elem == valor:
+            qt += 1
+            indices.append(pos)
 
     print(f"{valor} ocorre {qt} vezes na lista.")
     print(f"Nas seguintes posições: {indices}")
