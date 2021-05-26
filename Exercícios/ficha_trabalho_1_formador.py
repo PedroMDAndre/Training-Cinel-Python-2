@@ -1,5 +1,8 @@
+import random
+
+
 def main():
-    exercicio13()
+    exercicio14()
 
 
 # Exercício 1
@@ -200,6 +203,33 @@ def procura_alt(lista, valor):
 
     print(f"{valor} ocorre {qt} vezes na lista.")
     print(f"Nas seguintes posições: {indices}")
+
+
+def exercicio14():
+    lista = []
+
+    # cria 10 valores aleatórios entre 10 e 30 e junta à lista
+    for i in range(10):
+        number = random.randint(10, 30)
+        lista.append(number)
+
+    print(f"Os 10 valores gerados foram {lista}")
+    resp = maiores(lista)
+    print(f"os 5 maiores números da lista são {resp}")
+
+
+# função devolve os 5 maiores números, sem números repetidos
+def maiores(lista: list):
+    nova = []
+
+    for x in range(5):
+        maximo = max(lista)
+        nova.append(maximo)
+
+        while maximo in lista:
+            lista.remove(maximo)
+
+    return nova
 
 
 if __name__ == '__main__':
