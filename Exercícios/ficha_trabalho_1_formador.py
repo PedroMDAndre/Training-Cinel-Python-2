@@ -1,5 +1,5 @@
 def main():
-    exercicio9()
+    exercicio12()
 
 
 # Exercício 1
@@ -155,6 +155,30 @@ def exercicio_extra1():
         valor = int(input("insira outro: "))
 
     print("Os valores lidos foram", tuplo)
+
+
+def exercicio12():
+    lista = [3, 7, 5, 9, 3, 5, 7, 2, 0, 9, 6, 3, 0, 8]
+    print(f"Lista de valores: {lista}")
+    valor = int(input("Qual o nº que deseja procurar? "))
+    procura(lista, valor)
+
+
+def procura(lista, valor):
+    qt = 0
+    indices = []
+
+    lim = len(lista)
+    i = 0
+
+    while i < lim:
+        if lista[i] == valor:
+            qt += 1
+            indices.append(i)
+        i += 1
+
+    print(f"{valor} ocorre {qt} vezes na lista.")
+    print(f"Nas seguintes posições: {indices}")
 
 
 if __name__ == '__main__':
