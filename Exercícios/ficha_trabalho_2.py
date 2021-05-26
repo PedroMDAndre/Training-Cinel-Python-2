@@ -48,9 +48,9 @@ def concatnar2ficheiros(nome1: str, nome2: str):
 
     conteudo_f1 = ficheiro1.read()
     conteudo_f2 = ficheiro2.read()
-    conteudo_final = conteudo_f1 + "\n" + conteudo_f2
 
-    ficheiro_resultado.write(conteudo_final)
+    ficheiro_resultado.write(conteudo_f1)
+    ficheiro_resultado.write(conteudo_f2)
 
     ficheiro1.close()
     ficheiro2.close()
@@ -67,9 +67,18 @@ def filename_without_extension(name: str):
     return name
 
 
-# 3. Dado um ficheiro de texto e uma palavra solicitada ao utilizador, indique quantas vezes ocorre essa palavra no ficheiro.
-# 4. Desenvolva um programa que substitua uma palavra por outra num ficheiro. As palavras e o nome do ficheiro deverá ser dado pelo utilizador.
-# 5. Através das ferramentas disponíveis no seu sistema operativo (ex: bloco de notas), crie um ficheiro com o seguinte texto cujo nome seja pensamentos.txt:
+# 3. Dado um ficheiro de texto e uma palavra solicitada ao
+# utilizador, indique quantas vezes ocorre essa palavra no
+# ficheiro.
+
+
+# 4. Desenvolva um programa que substitua uma palavra por
+# outra num ficheiro. As palavras e o nome do ficheiro deverá
+# ser dado pelo utilizador.
+
+# 5. Através das ferramentas disponíveis no seu sistema
+# operativo (ex: bloco de notas), crie um ficheiro com o
+# seguinte texto cujo nome seja pensamentos.txt:
 # Falar é fácil. Mostre-me o código. (Linus Torvalds)
 # Não é a linguagem de programação que define o programador, mas sim sua lógica.
 # Faça como um programador. Quando tudo está errado e confuso, apague tudo e recomece do zero.
@@ -79,13 +88,19 @@ def filename_without_extension(name: str):
 #
 # a. Faça um programa que leia o ficheiro anterior e devolva quantas linhas, palavras, vogais e consoantes contém esse ficheiro.
 # b. Solicite uma palavra ao utilizador e informe-o de quantas vezes essa palavra ocorre no ficheiro e em que nº da linha.
-# 6. Dados 2 ficheiros de texto com informação, crie uma função que recebe os nomes desses ficheiros e devolve como resultado um ficheiro que seja a concatenação dos 2 mas o segundo ficheiro seja concatenado da última linha para a primeira, ou seja, a 1ª linha do ficheiro 2 será a última linha a ser concatenada e a última linha a 1ª a ser concatenada.
+
+# 6. Dados 2 ficheiros de texto com informação, crie uma função
+# que recebe os nomes desses ficheiros e devolve como resultado
+# um ficheiro que seja a concatenação dos 2 mas o segundo
+# ficheiro seja concatenado da última linha para a primeira, ou
+# seja, a 1ª linha do ficheiro 2 será a última linha a ser
+# concatenada e a última linha a 1ª a ser concatenada.
 # Exemplo
-# Fich1: Fich2: Final:
-# Olá mundo. Amanhã fará sol. Olá mundo.
-# Hoje chove. Está um frio danado. Hoje chove.
-# Está um frio danado.
-# Amanhã fará sol.
+# Fich1:        Fich2:                  Final:
+# Olá mundo.    Amanhã fará sol.        Olá mundo.
+# Hoje chove.   Está um frio danado.    Hoje chove.
+#                                       Está um frio danado.
+#                                       Amanhã fará sol.
 def exercicio():
     return
 
