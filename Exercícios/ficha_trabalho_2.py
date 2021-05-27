@@ -1,6 +1,7 @@
+# -*- coding: UTF-8 -*-
 def main():
-    exercicio2()
-2dd
+    exercicio3()
+
 
 # 1. Crie um programa que solicite ao utilizador o seu nome
 # completo. Em seguida pretende-se guardar esse nome num
@@ -32,16 +33,16 @@ def exercicio2():
 
     concatnar2ficheiros(nome1, nome2)
 
-    return
-
 
 def concatnar2ficheiros(nome1: str, nome2: str):
     path = "./ficheiros_texto/"
-    nome_ficheiro_resultado = filename_without_extension(nome1) + "_" + filename_without_extension(nome2)
+    nome_ficheiro_resultado = filename_without_extension(
+        nome1) + "_" + filename_without_extension(nome2)
 
     ficheiro1 = open(path + nome1, "r", encoding="utf-8")
     ficheiro2 = open(path + nome2, "r", encoding="utf-8")
-    ficheiro_resultado = open(path + nome_ficheiro_resultado + ".txt", "w", encoding="utf-8")
+    ficheiro_resultado = open(
+        path + nome_ficheiro_resultado + ".txt", "w", encoding="utf-8")
 
     conteudo_f1 = ficheiro1.read()
     conteudo_f2 = ficheiro2.read()
@@ -52,8 +53,6 @@ def concatnar2ficheiros(nome1: str, nome2: str):
     ficheiro1.close()
     ficheiro2.close()
     ficheiro_resultado.close()
-
-    return
 
 
 def filename_without_extension(name: str):
@@ -67,10 +66,23 @@ def filename_without_extension(name: str):
 # 3. Dado um ficheiro de texto e uma palavra solicitada ao
 # utilizador, indique quantas vezes ocorre essa palavra no
 # ficheiro.
+def exercicio3():
+    conta_palavra()
+    return
+
+
+def conta_palavra(palavra: str = "and", nome_ficheiro: str = "linux.txt"):
+    path = "/ficheiros_texto/"
+
+    ficheiro = open(path + nome_ficheiro, "r", encoding="utf-8")
+    texto:str = ficheiro.read()
+    contagem:int = texto.split(" ").count(palavra)
+    ficheiro.close()
+    print(contagem)
 
 
 # 4. Desenvolva um programa que substitua uma palavra por
-# outra num ficheiro. As palavras e o nome do ficheiro deverá
+# outra num ficheiro. As palavras e o nome do ficheiro deverão
 # ser dado pelo utilizador.
 
 # 5. Através das ferramentas disponíveis no seu sistema
