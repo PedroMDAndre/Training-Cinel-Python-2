@@ -1,6 +1,6 @@
 def main():
     exercicio2()
-
+2dd
 
 # 1. Crie um programa que solicite ao utilizador o seu nome
 # completo. Em seguida pretende-se guardar esse nome num
