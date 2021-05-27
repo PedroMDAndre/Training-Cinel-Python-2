@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 def main():
-    exercicio4()
+    substituir_palavra()
 
 
 # 1. Crie um programa que solicite ao utilizador o seu nome
@@ -89,24 +89,29 @@ def conta_palavra(palavra: str = "libraries", nome_ficheiro: str = "linux.txt"):
 # outra num ficheiro. As palavras e o nome do ficheiro deverão
 # ser dado pelo utilizador.
 def exercicio4():
-    palavra = input("Indique uma palavra: ")
+    palavra_substituir = input("Indique a palavra a substituir: ")
+    palavra_nova = input("Indique nova palavra: ")
     nome_ficheiro = input("Indique o nome do ficheiro: ")
-    conta_palavra(palavra, nome_ficheiro)
+    substituir_palavra(palavra_substituir, palavra_nova, nome_ficheiro)
     return
 
 
-def conta_palavra(palavra: str = "libraries", nome_ficheiro: str = "linux.txt"):
+def substituir_palavra(palavra_substituir: str = "libraries",
+                       palavra_nova: str = "libraries1",
+                       nome_ficheiro: str = "linux.txt"):
     path = "./ficheiros_texto/"
-
 
     try:
         ficheiro = open(path + nome_ficheiro, "r", encoding="utf-8")
         texto: str = ficheiro.read()
-        contagem: int = texto.split(" ").count(palavra)
-        print(f"A palavra {palavra} aparece {contagem} no ficheiro.")
+        texto = texto.replace(palavra_substituir, palavra_nova)
+        ficheiro = open(path + nome_ficheiro, "w", encoding="utf-8")
+        ficheiro.write(texto)
+        print(f"A palavra '{palavra_substituir}' foi substituída pela palavra '{palavra_nova}' no ficheiro.")
         ficheiro.close()
     except FileNotFoundError:
         print("Não foi possível encontrar o ficheiro.")
+
 
 # 5. Através das ferramentas disponíveis no seu sistema
 # operativo (ex: bloco de notas), crie um ficheiro com o
