@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 def main():
-    exercicio3()
+    exercicio4()
 
 
 # 1. Crie um programa que solicite ao utilizador o seu nome
@@ -67,23 +67,46 @@ def filename_without_extension(name: str):
 # utilizador, indique quantas vezes ocorre essa palavra no
 # ficheiro.
 def exercicio3():
-    conta_palavra()
-    return
+    palavra = input("Indique uma palavra: ")
+    nome_ficheiro = input("Indique o nome do ficheiro: ")
+    conta_palavra(palavra, nome_ficheiro)
 
 
-def conta_palavra(palavra: str = "and", nome_ficheiro: str = "linux.txt"):
-    path = "/ficheiros_texto/"
+def conta_palavra(palavra: str = "libraries", nome_ficheiro: str = "linux.txt"):
+    path = "./ficheiros_texto/"
 
-    ficheiro = open(path + nome_ficheiro, "r", encoding="utf-8")
-    texto:str = ficheiro.read()
-    contagem:int = texto.split(" ").count(palavra)
-    ficheiro.close()
-    print(contagem)
+    try:
+        ficheiro = open(path + nome_ficheiro, "r", encoding="utf-8")
+        texto: str = ficheiro.read()
+        contagem: int = texto.split(" ").count(palavra)
+        print(f"A palavra {palavra} aparece {contagem} no ficheiro.")
+        ficheiro.close()
+    except FileNotFoundError:
+        print("Não foi possível encontrar o ficheiro.")
 
 
 # 4. Desenvolva um programa que substitua uma palavra por
 # outra num ficheiro. As palavras e o nome do ficheiro deverão
 # ser dado pelo utilizador.
+def exercicio4():
+    palavra = input("Indique uma palavra: ")
+    nome_ficheiro = input("Indique o nome do ficheiro: ")
+    conta_palavra(palavra, nome_ficheiro)
+    return
+
+
+def conta_palavra(palavra: str = "libraries", nome_ficheiro: str = "linux.txt"):
+    path = "./ficheiros_texto/"
+
+
+    try:
+        ficheiro = open(path + nome_ficheiro, "r", encoding="utf-8")
+        texto: str = ficheiro.read()
+        contagem: int = texto.split(" ").count(palavra)
+        print(f"A palavra {palavra} aparece {contagem} no ficheiro.")
+        ficheiro.close()
+    except FileNotFoundError:
+        print("Não foi possível encontrar o ficheiro.")
 
 # 5. Através das ferramentas disponíveis no seu sistema
 # operativo (ex: bloco de notas), crie um ficheiro com o
