@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 def main():
-    substituir_palavra()
+    exercicio5b()
 
 
 # 1. Crie um programa que solicite ao utilizador o seu nome
@@ -64,7 +64,7 @@ def filename_without_extension(name: str):
 
 
 # 3. Dado um ficheiro de texto e uma palavra solicitada ao
-# utilizador, indique quantas vezes ocorre essa palavra no
+# utilizador, indique quantas vezes ocorre essa palavra/sequência no
 # ficheiro.
 def exercicio3():
     palavra = input("Indique uma palavra: ")
@@ -78,8 +78,8 @@ def conta_palavra(palavra: str = "libraries", nome_ficheiro: str = "linux.txt"):
     try:
         ficheiro = open(path + nome_ficheiro, "r", encoding="utf-8")
         texto: str = ficheiro.read()
-        contagem: int = texto.split(" ").count(palavra)
-        print(f"A palavra {palavra} aparece {contagem} no ficheiro.")
+        contagem: int = texto.count(palavra)
+        print(f"A palavra {palavra} aparece {contagem}x no ficheiro.")
         ficheiro.close()
     except FileNotFoundError:
         print("Não foi possível encontrar o ficheiro.")
@@ -113,18 +113,61 @@ def substituir_palavra(palavra_substituir: str = "libraries",
         print("Não foi possível encontrar o ficheiro.")
 
 
-# 5. Através das ferramentas disponíveis no seu sistema
-# operativo (ex: bloco de notas), crie um ficheiro com o
-# seguinte texto cujo nome seja pensamentos.txt:
-# Falar é fácil. Mostre-me o código. (Linus Torvalds)
-# Não é a linguagem de programação que define o programador, mas sim sua lógica.
-# Faça como um programador. Quando tudo está errado e confuso, apague tudo e recomece do zero.
-# Linguagens não morrem mas sim seus programadores.
-# Uma linguagem não faz seu código ser bom, programadores bons fazem seu código ser bom.
-# Retirado de https://www.pensador.com/frases_de_programador/
-#
-# a. Faça um programa que leia o ficheiro anterior e devolva quantas linhas, palavras, vogais e consoantes contém esse ficheiro.
-# b. Solicite uma palavra ao utilizador e informe-o de quantas vezes essa palavra ocorre no ficheiro e em que nº da linha.
+# 5. Dado o ficheiro:  pensamentos.txt:
+#    a. Faça um programa que leia o ficheiro anterior e devolva
+#       quantas linhas, palavras, vogais e consoantes contém esse ficheiro.
+#    b. Solicite uma palavra ao utilizador e informe-o de quantas vezes essa
+#       palavra/sequência ocorre no ficheiro e em que nº da linha.
+def exercicio5a():
+    vogais = "aeiouàáãâèéêìíîòóôõùúû"
+    path = "./ficheiros_texto/pensamentos.txt"
+    file = open(path, "r", encoding="utf-8")
+    texto: str = file.read().lower()
+    file.close()
+
+    nr_linhas = 0
+    nr_palavras = 0
+    nr_vogais = 0
+    nr_consoantes = 0
+
+    nr_linhas = texto.count("\n") + 1
+    nr_palavras = len(texto.split(" "))
+
+    for i in texto:
+        if i in vogais:
+            nr_vogais += 1
+
+    for i in texto:
+        if i.isalpha() and i not in vogais:
+            nr_consoantes += 1
+
+    print("Número de linhas:     ", nr_linhas)
+    print("Número de palavras:   ", nr_palavras)
+    print("Número de vogais:     ", nr_vogais)
+    print("Número de consoantes: ", nr_consoantes)
+
+
+def exercicio5b():
+    nr_palavra = 0
+    nrs_linha = []
+
+    palavra = input("Qual a palavra a procurar? ")
+
+    path = "./ficheiros_texto/pensamentos.txt"
+    file = open(path, "r", encoding="utf-8")
+
+    linhas_texto = file.readlines()
+
+    for pos_linha, linha_texto in enumerate(linhas_texto):
+        if palavra in linha_texto:
+            nr_palavra += linha_texto.count(palavra)
+            nrs_linha.append(pos_linha + 1)
+
+    file.close()
+
+    print(f"A palavra {palavra} aparece {nr_palavra}x.")
+    print(f"A palavra aparece nas posições {nrs_linha}")
+
 
 # 6. Dados 2 ficheiros de texto com informação, crie uma função
 # que recebe os nomes desses ficheiros e devolve como resultado
