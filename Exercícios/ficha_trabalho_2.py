@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 def main():
-    exercicio5b()
+    exercicio6()
 
 
 # 1. Crie um programa que solicite ao utilizador o seu nome
@@ -125,20 +125,16 @@ def exercicio5a():
     texto: str = file.read().lower()
     file.close()
 
-    nr_linhas = 0
-    nr_palavras = 0
     nr_vogais = 0
     nr_consoantes = 0
 
     nr_linhas = texto.count("\n") + 1
-    nr_palavras = len(texto.split(" "))
+    nr_palavras = len(texto.split())
 
-    for i in texto:
-        if i in vogais:
+    for caracter in texto:
+        if caracter in vogais:
             nr_vogais += 1
-
-    for i in texto:
-        if i.isalpha() and i not in vogais:
+        elif caracter.isalpha():
             nr_consoantes += 1
 
     print("Número de linhas:     ", nr_linhas)
@@ -176,13 +172,31 @@ def exercicio5b():
 # seja, a 1ª linha do ficheiro 2 será a última linha a ser
 # concatenada e a última linha a 1ª a ser concatenada.
 # Exemplo
-# Fich1:        Fich2:                  Final:
+# fich1:        fich2:                  final:
 # Olá mundo.    Amanhã fará sol.        Olá mundo.
 # Hoje chove.   Está um frio danado.    Hoje chove.
 #                                       Está um frio danado.
 #                                       Amanhã fará sol.
-def exercicio():
-    return
+def exercicio6():
+    path = "./ficheiros_texto/"
+
+    fich1 = open(path + "fich1.txt", "r", encoding="utf-8")
+    fich2 = open(path + "fich2.txt", "r", encoding="utf-8")
+    final = open(path + "final.txt", "w", encoding="utf-8")
+
+    texto1_list = fich1.readlines()
+    texto2_list = fich2.readlines()
+    texto2_list.reverse()
+
+    texto_final_list = texto1_list + texto2_list
+
+    for linha in texto_final_list:
+        final.write(linha.replace("\n", ""))
+        final.write("\n")
+
+    fich1.close()
+    fich2.close()
+    final.close()
 
 
 if __name__ == '__main__':
