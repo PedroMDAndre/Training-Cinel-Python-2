@@ -52,7 +52,8 @@ def exercicio1():
     for cidade in frequencias_cidades:
         print(f"     {cidade[0]:10} - {cidade[1]*100:.1f}%")
 
-    print(f"h. Pessoas registadas:", nr_pessoas)
+    cidade = input(f"h. Introduza o nome de uma cidade:")
+    troca_cidade(cidade, pessoas)
 
 
 def ficheiro_para_lista_pessoas():
@@ -135,6 +136,19 @@ def cidades_freq(pessoas):
         result.append([cidade, nr_habitantes / total_cidades])
 
     return result
+
+
+def troca_cidade(cidade, pessoas):
+    for pessoa in pessoas:
+        if pessoa[1] == cidade:
+            resposta = input(f"{pessoa[0]} vive {pessoa[1]}.\nPretende mudar de cidade (y/n): ")
+            if resposta.lower() == "y":
+                nova_cidade = input("Qual a nova cidade? ")
+                pessoa[1] = nova_cidade
+    print("Listagem de habitantes:")
+    print(f"{'Nome':12}{'Cidade':10}{'Idade'[2]:3}{'Zona':>10}")
+    for pessoa in pessoas:
+        print(f"{pessoa[0]:12}{pessoa[1]:10}{pessoa[2]:3}{pessoa[3]:>10}")
 
 
 # 2. Dado um nome de um ficheiro, criar 10 ficheiros com
