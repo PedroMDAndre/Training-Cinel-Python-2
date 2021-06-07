@@ -2,7 +2,7 @@ path = "./ficheiros_texto/ficha_trabalho_03/"
 
 
 def main():
-    exercicio1()
+    exercicio2()
 
 
 # #1. Considere o ficheiro de texto "exercicio_01.csv"
@@ -48,9 +48,9 @@ def exercicio1():
     print(f"e. Nr. pessoas que vivem: {cidade}: {qtd_pessoas_cidade(cidade, pessoas)}")
     print(f"f. Cidade com mais habitantes:  ", cidade_mais_habitada(pessoas))
 
-    print(f"g. Percentagem de habitantes por cidade:")
+    print(f"g. Percentagem e quantidade de habitantes por cidade:")
     for cidade in frequencias_cidades:
-        print(f"     {cidade[0]:10} - {cidade[1]*100:.1f}%")
+        print(f"     {cidade[0]:10} - {cidade[1] * 100:.1f}% - {cidade[2]}")
 
     cidade = input(f"h. Introduza o nome de uma cidade:")
     troca_cidade(cidade, pessoas)
@@ -133,7 +133,7 @@ def cidades_freq(pessoas):
     total_cidades = len(lista_cidades)
     for cidade in set_cidades:
         nr_habitantes = lista_cidades.count(cidade)
-        result.append([cidade, nr_habitantes / total_cidades])
+        result.append([cidade, nr_habitantes / total_cidades, nr_habitantes])
 
     return result
 
@@ -155,6 +155,25 @@ def troca_cidade(cidade, pessoas):
 #    o mesmo nome seguido da sua numeração. Por exemplo,
 #    para o ficheiro fich.txt, deverá criar os ficheiros
 #    fich1.txt, fich2.txt, fich3.txt, ... fich10.txt.
+def exercicio2():
+    nome_ficheiro = input("Introduza o nome do ficheiro?")
+    criar_ficheiros(nome_ficheiro, 10)
+    return
+
+
+def criar_ficheiros(nome_ficheiro, numero_ficheiros):
+    nome_ficheiro_partes = nome_ficheiro.split(".")
+
+    extensao = ""
+    if len(nome_ficheiro_partes) > 1:
+        extensao = "." + nome_ficheiro_partes[-1]
+        nome_ficheiro_partes = nome_ficheiro_partes[0:-1]
+
+    nome_ficheiro = ".".join(nome_ficheiro_partes)
+
+    for i in range(1, numero_ficheiros + 1):
+        novo_nome_ficheiro = nome_ficheiro + str(i).zfill(len(str(numero_ficheiros)))
+        open(path + novo_nome_ficheiro + extensao, "w")
 
 
 # 3. Construa um dicionário de cores, onde a chave é a cor
