@@ -173,7 +173,8 @@ def criar_ficheiros(nome_ficheiro, numero_ficheiros):
 
     for i in range(1, numero_ficheiros + 1):
         novo_nome_ficheiro = nome_ficheiro + str(i).zfill(len(str(numero_ficheiros)))
-        open(path + novo_nome_ficheiro + extensao, "w")
+        ficheiro = open(path + novo_nome_ficheiro + extensao, "w")
+        ficheiro.close()
 
 
 # 3. Construa um dicionário de cores, onde a chave é a cor
