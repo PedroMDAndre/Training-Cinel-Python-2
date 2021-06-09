@@ -2,7 +2,7 @@ path = "./ficheiros_texto/ficha_trabalho_03/"
 
 
 def main():
-    exercicio2()
+    exercicio5()
 
 
 # #1. Considere o ficheiro de texto "exercicio_01.csv"
@@ -185,6 +185,75 @@ def criar_ficheiros(nome_ficheiro, numero_ficheiros):
 #    O seu programa deverá solicitar ao user qual a cor que
 #    deseja traduzir e dar como resposta a cor correspondente
 #    em Inglês.
+def exercicio3():
+    dict_cores = {
+        "Preto": "Black", "Branco": "White", "Azul": "Blue",
+        "Verde": "Green", "Vermelho": "Red", "Amarelo": "Yellow",
+        "Castanho": "Brown", "Rosa": "Pink", "Laranja": "Orange",
+        "Cinzento": "Gray"
+    }
+
+    print(dict_cores.keys())
+    cor = input("Escreva a cor que deseja traduzir: ").title()
+
+    if cor in dict_cores:
+        print("Tradução para inglês: ", dict_cores[cor])
+    else:
+        print("A cor não existe no dicionário.")
+
+
+# 4.  Dado o seguinte dicionário, dici={'a':4, 'b':2, 'c':1, 'd':3},
+#    elabore um pequeno script que ordene o dicionário pelos seus
+#    valores.
+#    Neste caso resultaria em
+#    {'c': 1, 'b': 2, 'd': 3, 'a': 4}.
+def exercicio4():
+    return
+
+
+#    5.  Altere o dicionário do exercício 3 para acrescentar as
+#    cores em francês. Assim, o seu dicionário obteria as
+#    traduções de português para inglês e francês.
+#    Espera-se  obter  o  dicionário
+#    {Preto:  (Black,  Noir),
+#     Branco:  (White,  Blanc),
+#     Azul:  (Blue,  Bleu),
+#     Verde:  (Green,  Vert),
+#     Vermelho:  (Red,  Rouge),
+#     Amarelo:  (Yellow,  Jaune),
+#     Castanho:  (Brown,  Marron),
+#     Rosa:  (Pink,  Rose),
+#     Laranja:  (Orange,  Orange),
+#     Cinzento: (Gray, Gris)}
+
+#     Sugestão:  alterar cada valor do dicionário para uma lista
+#     de valores,  onde  o  1º  valor é a palavra em inglês
+#     (que já lá está) e o 2º valor a palavra em francês que irá
+#     ser solicitada ao utilizador
+def exercicio5():
+    dict_cores_EN_FR = {
+        "Preto": ("Black", "Noir"),
+        "Branco": ("White", "Blanc"),
+        "Azul": ("Blue", "Blue"),
+        "Verde": ("Green", "Vert"),
+        "Vermelho": ("Red", "Rouge"),
+        "Amarelo": ("Yellow", "Jaune"),
+        "Castanho": ("Brown", "Marron"),
+        "Rosa": ("Pink", "Rose"),
+        "Laranja": ("Orange", "Orange"),
+        "Cinzento": ("Gray", "Gris")
+    }
+    dict_cores = {
+        "Preto": "Black", "Branco": "White", "Azul": "Blue",
+        "Verde": "Green", "Vermelho": "Red", "Amarelo": "Yellow",
+        "Castanho": "Brown", "Rosa": "Pink", "Laranja": "Orange",
+        "Cinzento": "Gray"
+    }
+    for cor in dict_cores:
+        traducao = input(f"Escreva a tradução de {cor} para Francês: ").title()
+        dict_cores[cor] = (dict_cores[cor], traducao)
+    print("O dicionário resultado é:")
+    print(dict_cores)
 
 
 if __name__ == '__main__':
