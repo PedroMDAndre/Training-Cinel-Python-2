@@ -2,7 +2,7 @@ path = "./ficheiros_texto/ficha_trabalho_03/"
 
 
 def main():
-    exercicio5()
+    exercicio4()
 
 
 # #1. Considere o ficheiro de texto "exercicio_01.csv"
@@ -208,7 +208,19 @@ def exercicio3():
 #    Neste caso resultaria em
 #    {'c': 1, 'b': 2, 'd': 3, 'a': 4}.
 def exercicio4():
-    return
+    dictionary = {'c': 1, 'b': 2, 'd': 3, 'a': 4}
+    lista = dictionary.values()
+    lista = sorted(lista)
+
+    dictionary2 = dict()
+
+    for num in lista:
+        for key in dictionary:
+            if dictionary[key] == num:
+                dictionary2[key] = num
+                dictionary.pop(key)
+                break
+    print(dictionary2)
 
 
 #    5.  Altere o dicionário do exercício 3 para acrescentar as
