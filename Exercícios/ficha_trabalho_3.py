@@ -261,9 +261,9 @@ def exercicio5():
         "Castanho": "Brown", "Rosa": "Pink", "Laranja": "Orange",
         "Cinzento": "Gray"
     }
-    for cor_EN in dict_cores:
-        cor_FR = input(f"Escreva a tradução de {cor_EN} para Francês: ").title()
-        dict_cores[cor_EN] = (dict_cores[cor_EN], cor_FR)
+    for cor_EN_key in dict_cores:
+        cor_FR = input(f"Escreva a tradução de {cor_EN_key} para Francês: ").title()
+        dict_cores[cor_EN_key] = (dict_cores[cor_EN_key], cor_FR)
     print("O dicionário resultado é:")
     print(dict_cores)
 
