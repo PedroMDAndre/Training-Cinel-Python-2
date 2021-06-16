@@ -77,7 +77,6 @@ def window2():
     janela.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
 
     # Window objects
-
     label_utilizador = Label(janela,
                              text="Python(Tkinter) - Objecto Label",
                              font=fonte_arial,
@@ -94,7 +93,6 @@ def window2():
                          anchor=W)
 
     # Objects' placement
-
     label_utilizador.pack(fill=BOTH)
     label_center.pack(expand=YES)
 
@@ -103,7 +101,10 @@ def window2():
 
 def window3():
     janela = Tk()
+    janela.iconbitmap("icon_python.ico")
+    janela.title("Frames")
 
+    # Window objects
     frame1 = Frame(janela)
     frame2 = Frame(janela)
 
@@ -112,6 +113,7 @@ def window3():
     button3 = Button(frame1, text="Pink", fg="pink")
     button4 = Button(frame2, text="Green", fg="green")
 
+    # Objects' placement
     button1.pack(side=LEFT)
     button2.pack(side=LEFT)
     button3.pack(side=LEFT)
@@ -121,7 +123,6 @@ def window3():
     frame2.pack()
 
     janela.mainloop()
-    return
 
 
 if __name__ == '__main__':
