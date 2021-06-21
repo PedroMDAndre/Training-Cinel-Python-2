@@ -99,7 +99,30 @@ def window2():
     janela.mainloop()
 
 
+# exercício 5 e 6
 def window3():
+    # funções
+    def corred():
+        troca_cor(button1)
+
+    def corblue():
+        troca_cor(button2)
+
+    def corpink():
+        troca_cor(button3)
+
+    def corgreen():
+        troca_cor(button4)
+
+    def troca_cor(botao: Button):  # Troca cor no botão fg <=> bg
+        cor_bg_inicial = botao["bg"]
+        cor_fg_final = botao["fg"]
+
+        botao.configure(bg=cor_fg_final, fg=cor_bg_inicial)
+        # botao["bg"] = cor_fg_final
+        # botao["fg"] = cor_bg_inicial
+
+    # Interface gráfica
     janela = Tk()
     janela.iconbitmap("icon_python.ico")
     janela.title("Frames")
@@ -108,10 +131,10 @@ def window3():
     frame1 = Frame(janela)
     frame2 = Frame(janela)
 
-    button1 = Button(frame1, text="Red", fg="red")
-    button2 = Button(frame1, text="Blue", fg="blue")
-    button3 = Button(frame1, text="Pink", fg="pink")
-    button4 = Button(frame2, text="Green", fg="green")
+    button1 = Button(frame1, text="Red", fg="red", command=corred)
+    button2 = Button(frame1, text="Blue", fg="blue", command=corblue)
+    button3 = Button(frame1, text="Pink", fg="pink", command=corpink)
+    button4 = Button(frame2, text="Green", fg="green", command=corgreen)
 
     # Objects' placement
     button1.pack(side=LEFT)
