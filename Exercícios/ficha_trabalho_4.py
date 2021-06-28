@@ -256,7 +256,7 @@ def window8far_cel():
 
     def ler():
         far = float(entry_fahrenheit.get())
-        cel = round((far - 32) + 5 / 9, 2)
+        cel = round((far - 32) * 5 / 9, 2)
 
         label_celsius['text'] = f"A conversão de {far}ºF corresponde a {cel}ºC"
 
