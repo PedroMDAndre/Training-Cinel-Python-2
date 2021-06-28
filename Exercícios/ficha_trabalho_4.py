@@ -3,7 +3,7 @@ from tkinter import *
 
 
 def main():
-    window6()
+    window8far_cel()
     return
 
 
@@ -246,7 +246,65 @@ def window5():
 
 
 # exercício 10
-def window6():
+def window8far_cel():
+    # Functions
+    def sair():
+        janela1.destroy()
+
+    def limpar():
+        entry_fahrenheit.delete(0, END)
+
+    def ler():
+        far = float(entry_fahrenheit.get())
+        cel = round((far - 32) + 5 / 9, 2)
+
+        label_celsius['text'] = f"A conversão de {far}ºF corresponde a {cel}ºC"
+
+        entry_fahrenheit.focus()
+
+    janela1 = Tk()
+    janela1.title("Conversor para ºC")
+    janela1.iconbitmap("snake.ico")
+    janela1.geometry("400x250")
+    janela1.resizable(False, False)
+
+    # Window objects
+    label_fahrenheit = Label(janela1, text="Temperatura em Fahrenheit:")
+    label_celsius = Label(janela1, text="")
+
+    entry_fahrenheit = Entry(janela1)
+
+    # Criar Button
+    button_sair = Button(janela1, bg="Red", fg="Green",
+                   text="Sair", command=sair)
+    button_limpar = Button(janela1, bg="Orange", fg="Blue",
+                     text="Limpar", command=limpar)
+    button_ler = Button(janela1, bg="Orange", fg="Blue",
+                  text="Ler", command=ler)
+
+    label_nome_lido = Label(janela1)
+    label_idade_lida = Label(janela1)
+
+    # Layout
+    janela1.grid()
+
+    label_fahrenheit.grid(row=0, column=0)
+    entry_fahrenheit.grid(row=0, column=1)
+
+    label_celsius.grid(row=2, column=0, columnspan=3)
+
+    button_sair.grid(row=1, column=0)
+    button_limpar.grid(row=1, column=1)
+    button_ler.grid(row=1, column=2)
+
+
+    entry_fahrenheit.focus()
+
+    janela1.mainloop()
+
+
+# exercício 11
+def window7():
     # Functions
     def clear():
         entry_nome.delete(0, END)
@@ -277,8 +335,8 @@ def window6():
     button_clear = Button(janela1, text="Clear", command=clear)
     button_ok = Button(janela1, text="Ok", command=ok)
 
-    label_nome_lido = Label(janela1, bg="white")
-    label_idade_lida = Label(janela1, bg="white")
+    label_nome_lido = Label(janela1)
+    label_idade_lida = Label(janela1)
 
     # Layout
     janela1.grid()
