@@ -1,10 +1,10 @@
 import time
 from tkinter import *
+from time import strftime
 
 
 def main():
-    window8far_cel()
-    return
+    janela_automoveis()
 
 
 def window1():
@@ -276,14 +276,11 @@ def window8far_cel():
 
     # Criar Button
     button_sair = Button(janela1, bg="Red", fg="Green",
-                   text="Sair", command=sair)
+                         text="Sair", command=sair)
     button_limpar = Button(janela1, bg="Orange", fg="Blue",
-                     text="Limpar", command=limpar)
+                           text="Limpar", command=limpar)
     button_ler = Button(janela1, bg="Orange", fg="Blue",
-                  text="Ler", command=ler)
-
-    label_nome_lido = Label(janela1)
-    label_idade_lida = Label(janela1)
+                        text="Ler", command=ler)
 
     # Layout
     janela1.grid()
@@ -297,13 +294,12 @@ def window8far_cel():
     button_limpar.grid(row=1, column=1)
     button_ler.grid(row=1, column=2)
 
-
     entry_fahrenheit.focus()
 
     janela1.mainloop()
 
 
-# exercício 11
+# exercício 11 e 12
 def window7():
     # Functions
     def clear():
@@ -319,10 +315,14 @@ def window7():
         label_nome_lido["text"] = "Nome lido -> " + nome
         label_idade_lida["text"] = "Idade lida -> " + idade
 
+    def relogio():
+        horas = strftime('%H:%M:%S')
+        label_relogio["text"] = horas
+
     janela1 = Tk()
-    janela1.title("1ª janela em Python")
+    janela1.title("Leitura de valores")
     janela1.iconbitmap("snake.ico")
-    janela1.geometry("240x180")
+    janela1.geometry("240x200")
     janela1.resizable(False, False)
 
     # Window objects
@@ -337,6 +337,9 @@ def window7():
 
     label_nome_lido = Label(janela1)
     label_idade_lida = Label(janela1)
+
+    fonte = ("Arial", 16, "bold")
+    label_relogio = Label(janela1, text="", font=fonte)
 
     # Layout
     janela1.grid()
@@ -353,9 +356,81 @@ def window7():
     label_nome_lido.place(x=20, y=120, width=200)
     label_idade_lida.place(x=20, y=140, width=200)
 
+    label_relogio.place(x=20, y=160, width=200)
+
     entry_nome.focus()
 
+    relogio()
+
+    janela1.after(1000, relogio)
     janela1.mainloop()
+
+
+# exercicio 13
+# Desenvolva uma pequena interface, usando radiobutton, para
+# escolher o género de uma pessoa.
+def janela_genero():
+    janela = Tk()
+
+    genero_escolhido = StringVar()
+
+    radiobutton_masculino = Radiobutton(janela, text="Masculino",
+                                        variable=genero_escolhido,
+                                        value="Masculino")
+    radiobutton_feminino = Radiobutton(janela, text="Feminino",
+                                       variable=genero_escolhido,
+                                       value="Feminino")
+    radiobutton_masculino.select()
+
+    radiobutton_masculino.pack(anchor=W)
+    radiobutton_feminino.pack(anchor=W)
+
+    janela.mainloop()
+
+
+# exercicio 14
+# Desenvolva uma pequena interface, usando checkbutton, para
+# escolher quais as marcas de automóveis que mais gosta.
+def janela_automoveis():
+    def ler_valores():
+        print("Audi:", marca_audi.get())
+        print("BMW: ", marca_bmw.get())
+        print("Fiat:", marca_fiat.get())
+
+    janela = Tk()
+    marca_audi = BooleanVar()
+    marca_bmw = BooleanVar()
+    marca_fiat = BooleanVar()
+
+    check_audi = Checkbutton(janela, text="Audi",
+                             variable=marca_audi,
+                             command=ler_valores)
+    check_bmw = Checkbutton(janela, text="BMW",
+                            variable=marca_bmw,
+                            command=ler_valores)
+    check_fiat = Checkbutton(janela, text="Fiat",
+                             variable=marca_fiat,
+                             command=ler_valores)
+
+    check_audi.pack(anchor=W)
+    check_bmw.pack(anchor=W)
+    check_fiat.pack(anchor=W)
+
+    janela.mainloop()
+    return
+
+
+# exercicio 15
+# Desenvolva uma pequena interface, usando combobox, para
+# escolher a fruta preferida de uma lista inserida ao seu gosto.
+
+# exercicio 16 e 17
+# Desenvolva uma interface gráfica onde é criada uma listbox
+# com 5 nomes de cidades. A aplicação deverá permitir apagar
+# a cidade selecionada.
+# Utilizando a interface anterior, utilize a biblioteca
+# messagebox para criar popup de confirmação se pretende
+# remover ou não o item selecionado.
 
 
 if __name__ == '__main__':
