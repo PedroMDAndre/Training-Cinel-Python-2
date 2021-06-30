@@ -1,10 +1,12 @@
 import time
 from tkinter import *
 from time import strftime
+from tkinter import ttk
+from tkinter import messagebox as msgBox
 
 
 def main():
-    janela_automoveis()
+    janela_cidades()
 
 
 def window1():
@@ -423,6 +425,13 @@ def janela_automoveis():
 # exercicio 15
 # Desenvolva uma pequena interface, usando combobox, para
 # escolher a fruta preferida de uma lista inserida ao seu gosto.
+def janela_fruta():
+    janela = Tk()
+    frutas = ["Laranja", "Banana", "Maçã"]
+    combobox_fruta = ttk.Combobox(janela, values=frutas)
+    combobox_fruta.pack()
+    janela.mainloop()
+
 
 # exercicio 16 e 17
 # Desenvolva uma interface gráfica onde é criada uma listbox
@@ -431,6 +440,25 @@ def janela_automoveis():
 # Utilizando a interface anterior, utilize a biblioteca
 # messagebox para criar popup de confirmação se pretende
 # remover ou não o item selecionado.
+def janela_cidades():
+    def apagar():
+        msgBox.askyesno(title="Confirmação", message="Confirma que deseja apagar a entrada?")
+
+
+    janela = Tk()
+
+    cidades = ["Lisboa", "Coimbra", "Porto", "Aveiro", "Braga"]
+    listbox_cidades = Listbox(janela)
+    btn_apagar = Button(janela, text="Apagar", command=apagar)
+
+    for cidade in cidades:
+        listbox_cidades.insert(0, cidade)
+    print(listbox_cidades.keys())
+
+    listbox_cidades.pack()
+    btn_apagar.pack()
+
+    janela.mainloop()
 
 
 if __name__ == '__main__':

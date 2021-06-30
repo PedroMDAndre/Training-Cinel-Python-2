@@ -3,7 +3,7 @@ from tkinter import ttk
 
 
 def main():
-    window1()
+    window3()
     return
 
 
@@ -58,6 +58,28 @@ def window2():
 
     janela1.mainloop()
     return
+
+
+def window3():
+    def novo():
+        def sair():
+            janela2.destroy()
+
+        janela2 = Toplevel()
+        janela.geometry("150x100")
+        janela.title("Nova Janela")
+        b2 = Button(janela2, text="sair", command=sair)
+        b2.pack()
+
+        janela.mainloop()
+
+    janela = Tk()
+    janela.geometry("300x200")
+    janela.title("Janela Principal")
+    b = Button(janela, text="nova...", command=novo)
+    b.pack()
+
+    janela.mainloop()
 
 
 if __name__ == '__main__':
