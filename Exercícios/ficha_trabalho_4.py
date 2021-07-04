@@ -442,8 +442,14 @@ def janela_fruta():
 # remover ou não o item selecionado.
 def janela_cidades():
     def apagar():
-        msgBox.askyesno(title="Confirmação", message="Confirma que deseja apagar a entrada?")
+        if len(listbox_cidades.curselection()) == 0:
+            return
 
+        choice = msgBox.askyesno(title="Confirmação", message="Confirma que deseja apagar a entrada?")
+
+        if choice:
+            remove_position = listbox_cidades.curselection()
+            listbox_cidades.delete(remove_position)
 
     janela = Tk()
 
